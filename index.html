@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>AMD Modules</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+  </head>
+  <body>
+    <script>
+      requirejs.config({
+        baseUrl: '.',
+        paths: {
+          rxjs: 'https://unpkg.com/@reactivex/rxjs@6.0.0/dist/global/rxjs.umd',
+        },
+      });
+      require(['script'], function() {
+        require(['index']);
+        define('test', ['rxjs'], function(require, exports, rxjs) {
+          console.log(rxjs);
+        });
+      });
+    </script>
+  </body>
+</html>
